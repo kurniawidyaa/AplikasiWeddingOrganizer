@@ -29,8 +29,8 @@ class AdminSidebar extends Component
         ];
 
         $masterdata = [
-            'Customer' => '',
-            'Partner' => '',
+            'Customer' => '/admin/user',
+            // 'Partner' => '',
         ];
 
         $masterlayanan = [
@@ -45,8 +45,8 @@ class AdminSidebar extends Component
         ];
 
         $laporan = [
-            'Penjualan' => '',
-            'Laba Penjualan' => '',
+            // 'Penjualan' => '',
+            // 'Laba Penjualan' => '',
         ];
 
         $ownerSidebar = [
@@ -72,8 +72,8 @@ class AdminSidebar extends Component
         ];
 
         $ownerLaporan = [
-            'Penjualan' => '',
-            'Laba Penjualan' => '',
+            // 'Penjualan' => '',
+            // 'Laba Penjualan' => '',
         ];
 
         return view('components.admin.sidebar', compact(

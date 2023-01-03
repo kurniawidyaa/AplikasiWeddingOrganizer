@@ -63,8 +63,8 @@
                 <tr class="details">
                     <td>
                         Nama            : {{ $order->cart->user->name}} <br>
-                        Alamat          : {{ $order->shippingAddress->address }}<br>
-                        Nomor Telepon   : {{ $order->shippingAddress->phone_number }}<br>
+                        {{-- Alamat          : {{ $order->shippingAddress->address }}<br>
+                        Nomor Telepon   : {{ $order->shippingAddress->phone_number }}<br> --}}
                         Email           : {{ $order->cart->user->email }}<br><br>
                         Catatan order   : <p>-</p>
                     </td>

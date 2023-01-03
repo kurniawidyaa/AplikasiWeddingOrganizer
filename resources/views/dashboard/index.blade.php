@@ -70,7 +70,7 @@
         </div>     
 
     <div class="card">
-        <form action="{{ route('owner.process') }}" method="get">
+        <form action="{{ route('admin.process') }}" method="get">
             @csrf
         <div class="card-header d-flex inline">
             <div class="form-group row" >
@@ -113,9 +113,9 @@
                     <tr>
                         <th>No</th>
                         <th>Invoice</th>
-                        <th>Nama Penerima</th>
-                        <th>Nomor Tlp</th>
-                        <th>Alamat</th>
+                        {{-- <th>Nama Penerima</th>
+                        <th>Nomor Tlp</th> --}}
+                        <th>Tanggal Pengiriman</th>
                         <th>Pembayaran</th>
                         <th>Aksi</th>
                     </tr>
@@ -125,11 +125,12 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $order->cart->invoice_number }}</td>
-                        <td>{{ $order->shippingAddress->recipients_name}}</td>
-                        <td>{{ $order->shippingAddress->phone_number }}</td>
+                        {{-- <td>{{ $order->shippingAddress->recipients_name}}</td> --}}
+                        {{-- <td>{{ $order->shippingAddress->phone_number }}</td> --}}
                         <td>{{ $order->delivery_date }}</td>
                         <td><span class="tag tag-success">{{ $order->cart->payment_status }}</span></td>
                         <td><div class="btn-group btn-group-sm">
+                            <a href="" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                             <a href="#" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
                             <a href="#" class="btn btn-danger"><i class="fas fa-trash"></i></a>
                             </div></td>

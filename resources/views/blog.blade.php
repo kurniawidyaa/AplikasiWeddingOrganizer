@@ -21,7 +21,7 @@
   
           <div class="row">
   
-            <div class="col-lg-8 entries">
+            <div class="col-lg-8 entries" style="border-radius: 16px;">
               @if ($posts->count())
               @foreach ($posts as $post) 
               <article class="entry">
@@ -68,9 +68,7 @@
             </div><!-- End blog entries list -->
   
             <div class="col-lg-4">
-  
               <div class="sidebar">
-  
                 <h3 class="sidebar-title">Search</h3>
                 <div class="sidebar-item search-form">
                   <form action="{{ route('post') }}">

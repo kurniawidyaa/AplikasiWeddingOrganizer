@@ -11,6 +11,7 @@ use App\Http\Controllers\ServiceCategoryController;
 use App\Http\Controllers\ServicePortfolioController;
 use App\Http\Controllers\DashboardServiceController;
 use App\Http\Controllers\DashboardServicePromoController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\PDFController;
@@ -33,9 +34,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 // Layanan
 Route::get('service', [ServiceController::class, 'index'])->name('service');
@@ -75,7 +74,6 @@ Route::prefix('user')->name('user.')->group(function () {
 
         // alamat pengiriman
         Route::resource('shippingaddress', ShippingAddressController::class);
-
         Route::get('generate-pdf', [OrderController::class, 'generatePDF'])->name('generatepdf');
     });
 });
@@ -102,6 +100,7 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('service/store', [DashboardServiceController::class, 'store'])->name('serv.store');
         Route::get('service/{identifier}/edit', [DashboardServiceController::class, 'edit'])->name('serv.edit');
         Route::patch('service/{identifier}', [DashboardServiceController::class, 'update'])->name('serv.update');
+        Route::get('service/show/{identifier}', [DashboardServiceController::class, 'show'])->name('serv.show');
         Route::delete('service_delete/{identifier}', [DashboardServiceController::class, 'destroy'])->name('serv.delete');
 
         // Dashboard Portfolio Layanan 
@@ -125,8 +124,19 @@ Route::prefix('admin')->name('admin.')->group(function () {
         Route::post('dbpost/store', [DashboardPostController::class, 'store'])->name('dbpost.store');
         Route::get('dbpost/{slug}/edit', [DashboardPostController::class, 'edit'])->name('dbpost.edit');
         Route::put('dbpost/{slug}', [DashboardPostController::class, 'update'])->name('dbpost.update');
+        Route::get('dbpost/show/{slug}', [DashboardPostController::class, 'show'])->name('dbpost.show');
         Route::delete('dbpost_delete/{slug}', [DashboardPostController::class, 'destroy'])->name('dbpost.delete');
     });
+
+    // Data Customer(user)
+    Route::get('user', [UserController::class, 'index'])->name('user.index');
+    Route::get('user/{id}/edit', [UserController::class, 'edit'])->name('user.edit');
+    Route::delete('user_delete/{id}', [UserController::class, 'destroy'])->name('user.delete');
+
+    // laporan 
+    // Route::get('report', [ReportController::class, 'index'])->name('report');
+    Route::get('reportprocess', [ReportController::class, 'proses'])->name('process');
+    Route::get('generatePDFReport', [ReportController::class, 'generatePDFReport'])->name('pdf.report');
 });
 
 Route::prefix('owner')->name('owner.')->group(function () {
@@ -182,6 +192,7 @@ Route::prefix('owner')->name('owner.')->group(function () {
         Route::get('dbpost/create', [DashboardPostController::class, 'create'])->name('dbpost.create');
         Route::post('dbpost/store', [DashboardPostController::class, 'store'])->name('dbpost.store');
         Route::get('dbpost/{slug}/edit', [DashboardPostController::class, 'edit'])->name('dbpost.edit');
+        Route::get('dbpost/show/{slug}', [DashboardPostController::class, 'show'])->name('dbpost.show');
         Route::patch('dbpost/{slug}', [DashboardPostController::class, 'update'])->name('dbpost.update');
         Route::delete('dbpost_delete/{slug}', [DashboardPostController::class, 'destroy'])->name('dbpost.delete');
         // Route::resource('dbpost', DashboardPostController::class);

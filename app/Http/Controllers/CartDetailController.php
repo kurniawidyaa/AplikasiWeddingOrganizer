@@ -143,6 +143,7 @@ class CartDetailController extends Controller
         try {
             $detailitem = CartDetail::findOrFail($id);
             $param = $request->param;
+            $param >= 0;
 
             if ($param == 'tambah') {
                 // update detail cart
@@ -159,6 +160,10 @@ class CartDetailController extends Controller
                 // update total
                 $detailitem->cart->updateTotal($detailitem->cart, '-' . ($detailitem->cart_detail_price - $detailitem->cart_detail_discount));
                 return back()->with('success', 'Item berhasil diupdate');
+            } elseif ($param == 0) {
+                // jika qty=0 maka item dihapus
+                // $item = $detailitem->updateDetail($detailitem, '-' . $qty, $detailitem->cart_detail_price, $detailitem->cart_detail_discount);
+                $detailitem->delete();
             }
         } catch (Exception $e) {
             $message = $e->getMessage();

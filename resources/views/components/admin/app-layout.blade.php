@@ -40,18 +40,21 @@
             <a href="index3.html" class="nav-link">Home</a>
         </li>
     </ul>
-    <ul class="navbar-nav ml-auto">
 
-    @if(Auth::guard('owner'))
-        <li class="nav-item mr-3">
-            <a class="nav-link" href="{{ route('owner.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                <i class="fa-solid fa-right-from-bracket"></i>  Logout owner
-            </a>
-            <form action="{{ route('owner.logout') }}" method="POST" class="d-none" id="logout-form">
-                @csrf
-            </form>
-        </li>
-    @elseif(Auth::guard('admin'))
+    @auth('owner')
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item mr-3">
+                <a class="nav-link" href="{{ route('owner.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <i class="fa-solid fa-right-from-bracket"></i>  Logout owner
+                </a>
+                <form action="{{ route('owner.logout') }}" method="POST" class="d-none" id="logout-form">
+                    @csrf
+                </form>
+            </li>
+        </ul>
+    @endauth
+    @auth('admin')
+        <ul class="navbar-nav ml-auto">
         <li class="nav-item mr-3">
                 <a class="nav-link" href="{{ route('admin.logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="fa-solid fa-right-from-bracket"></i>  Logout admin
@@ -60,8 +63,8 @@
                     @csrf
                 </form>
             </li>
-    @endif
-    </ul>
+        </ul>
+    @endauth
 </nav>
         <x-admin-sidebar></x-admin-sidebar>
 

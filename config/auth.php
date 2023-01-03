@@ -26,7 +26,7 @@ return [
 
     'owner' => [
         'driver' => 'eloquent',
-        'model' => \App\Models\Owner::class,
+        'model' => App\Models\Owner::class,
     ],
 
     /*

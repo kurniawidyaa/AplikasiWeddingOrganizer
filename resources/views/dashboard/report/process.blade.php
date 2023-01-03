@@ -6,7 +6,12 @@
               <div class="card-header">
                 <h3 class="card-title">Laporan Penjualan</h3>
                 <div class="card-tools">
-                  <a href="{{ route('owner.pdf.report') }}" class="btn btn-sm btn-info mx-2">Download</a>
+                  @auth('owner')
+                    <a href="{{ route('owner.pdf.report') }}" class="btn btn-sm btn-info mx-2">Download</a>
+                  @endauth
+                  @auth('admin')
+                    <a href="{{ route('admin.pdf.report') }}" class="btn btn-sm btn-info mx-2">Download</a>
+                  @endauth
                   <a href="" class="btn btn-sm btn-danger">
                     Tutup
                   </a>

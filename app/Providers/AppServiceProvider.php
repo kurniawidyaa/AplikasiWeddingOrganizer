@@ -31,7 +31,7 @@ class AppServiceProvider extends ServiceProvider
 
         // number format
         Blade::directive('currency', function ($expression) {
-            return "IDR. <?php echo number_format($expression,0,',','.'); ?>";
+            return "Rp. <?php echo number_format($expression,0,',','.'); ?>";
         });
     }
 }

@@ -4,6 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Order;
+use App\Models\Service;
+use App\Models\ServicePromo;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -32,15 +36,28 @@ class AdminController extends Controller
 
     public function logout()
     {
-        Auth::guard('admin')->logout();
+        Auth::logout('admin');
         return redirect('/');
     }
 
     public function index()
     {
-        return view('admin.index', [
+        return view('dashboard.index', [
             'submit' => 'Tambah Data',
-            'admin' => Admin::all(),
+            'order' => Order::all(),
+            'user' => User::count(),
+            'promo' => ServicePromo::count(),
+            'service' => Service::count(),
+
+        ]);
+    }
+
+    public function edit($id)
+    {
+        $admin = Admin::where('id', $id)->first();
+        return view('admin.edit', [
+            'admin' => $admin,
+            'submit' => 'Update',
         ]);
     }
 

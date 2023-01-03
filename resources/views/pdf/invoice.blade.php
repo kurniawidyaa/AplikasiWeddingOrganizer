@@ -137,7 +137,7 @@
                     Alamat          : {{ $order->shippingAddress->address }}<br>
                     Nomor Telepon   : {{ $order->shippingAddress->phone_number }}<br>
                     Email           : {{ $order->cart->user->email }}<br><br>
-                    Catatan order   : <p>-</p>
+                    Catatan order   : 
                 </td>
             </tr>
 

@@ -1,9 +1,14 @@
-/**
-* Template Name: Moderna - v4.8.0
-* Template URL: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+// JSslider
+var swiper = new Swiper(".mySwiper", {
+  slidesPerView: 4,
+  spaceBetween: 30,
+  centeredSlides: true,
+  pagination: {
+    el: ".swiper-pagination",
+    clickable: true
+  }
+});
+// end of js slider
 (function() {
   "use strict";
 

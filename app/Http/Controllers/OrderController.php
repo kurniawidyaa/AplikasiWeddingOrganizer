@@ -100,7 +100,7 @@ class OrderController extends Controller
                     // create var input order
                     $order = new Order;
                     $order->cart_id = $cart->id;
-                    $order->shipping_address_id = $shippingaddress->id;
+                    $order->shippingaddress_id = $shippingaddress->id;
                     $order->delivery_date = $request->delivery_date;
 
                     // store order

@@ -52,7 +52,7 @@
                             @endauth
                             {{-- admin side --}}
                             @auth('admin')
-                                <a href="" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
+                                <a href="{{ route('admin.user.edit', $user->id) }}" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
                             @endauth
                             <button type="submit" class="btn btn-sm btn-danger deletebtn"><i class="fas fa-trash"></i></button>
                             </div>

@@ -9,15 +9,15 @@
                     </button>
                 </div>
             </div>
-            {{-- owner side --}}
-            @auth('owner')
-            <form action="{{ route('owner.port.store') }}" method="POST" enctype="multipart/form-data">
-                @csrf
-            @endauth
-
+            
             {{-- admin side --}}
             @auth('admin')
             <form action="{{ route('admin.port.store') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+            @endauth
+            {{-- owner side --}}
+            @auth('owner')
+            <form action="{{ route('owner.port.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
             @endauth
                 <div class="card-body"> 

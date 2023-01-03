@@ -28,6 +28,12 @@
   <!-- Template Main CSS File -->
   <link href="/css/style.css" rel="stylesheet">
   <link href="/css/styles.css" rel="stylesheet">
+
+  {{-- swiperJS --}}
+  <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+    />
 </head>
 
 <body>
@@ -44,24 +50,8 @@
     <div class="footer-top">
       <div class="container">
         <div class="row">
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Layanan Kami</h4>
-            <ul>
-              {{-- @foreach($seviceCategory as $sc)
-              <li><i class="bx bx-chevron-right"></i> <a href="#">{{ $sc->name }}</a></li>
-              @endforeach --}}
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-contact">
-            <h4>Kontak Kami</h4>
+          <div class="col-lg-4 col-md-6 footer-links">
+            <h4>Alamat Kami</h4>
             <p>
               Dasana Indah, <br>
               Ruko Blok RF 1 No.21 dan 22<br>
@@ -69,16 +59,28 @@
               <strong>Phone:</strong> +62 951 748 7191<br>
               <strong>Email:</strong> nikahmurahtangerang@gmail.com<br>
             </p>
-
           </div>
 
-          <div class="col-lg-3 col-md-6 footer-info">
-            <h3>Tentang Kami</h3>
-            <p>Nikah Murah Tangerang Hadir untuk mempermurah dan mempermudah Pernikahan anda. mulai dari makeup, gaun, dekorasi, ketering, dll.</p>
+          <div class="col-lg-4 col-md-6 footer-contact">
+            <h4>Lokasi Kami</h4>
+            <div id="googleMap">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7932.165365710675!2d106.5965993!3d-6.2528363!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69fc44b944a02f%3A0xfa509463fb714b4b!2sJl.%20Dasana%20Indah%20Blok%20RF1%20No.21%2C%20Bojong%20Nangka%2C%20Kec.%20Klp.%20Dua%2C%20Kabupaten%20Tangerang%2C%20Banten%2015810!5e0!3m2!1sen!2sid!4v1667204479277!5m2!1sen!2sid" width="250" height="150" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 footer-info">
+            <h3>Social Media Kami</h3>
             <div class="social-links mt-3">
               <a href="https://www.facebook.com/nikahmurahtangerang/" class="facebook"><i class="bx bxl-facebook"></i></a>
               <a href="https://www.instagram.com/nikahmurahtangerang/" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href=""><i class="bi bi-tiktok"></i></a>
             </div>
+            {{-- <div class="socmed">
+              <i class="fa-brands fa-whatsapp"></i>
+              <i class="fa-brands fa-instagram"></i>
+              <i class="fa-brands fa-facebook"></i>
+              <i class="fa-brands fa-tiktok"></i>
+          </div> --}}
           </div>
 
         </div>
@@ -88,13 +90,6 @@
     <div class="container">
       <div class="copyright">
         &copy; Copyright <strong><span>Nikah Murah Tangerang</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/free-bootstrap-template-corporate-moderna/ -->
-        {{-- Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a> --}}
       </div>
     </div>
   </footer><!-- End Footer -->

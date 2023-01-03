@@ -2,14 +2,19 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="card-tools mt-3 mb-3">
-                <div class="input-group input-group-sm" >
-                    <input type="text" name="table_search" class="form-control float-right" style="width: 150px;" placeholder="Search">
+                    <form action="{{ route('admin.serv.index') }}">
+                        @if (request('servCategory'))
+                            <input type="hidden" name="servCategory" value="{{  request('servCategory') }}">
+                        @endif
+                        <div class="input-group input-group-sm" >
+                        <input type="text" name="table_search" class="form-control float-right" style="width: 150px;" placeholder="Search" value="{{ request('search') }}">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
-                </div>
+                    </div>
+                    </form>
             </div>
                 <div class="button mt-2" style="margin-left: 650px">
                     {{-- owner side --}}
@@ -49,11 +54,12 @@
                             <div class="btn-group btn-group-sm"> 
                                 {{-- owner side --}}
                             @auth('owner')
-                            <a href="{{ route('owner.serv.show', $serv->identifier) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
+                                <a href="{{ route('owner.serv.show', $serv->identifier) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{ route('owner.serv.edit', $serv->identifier) }}" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
                             @endauth
                             {{-- admin side --}}
                             @auth('admin')
+                                <a href="{{ route('admin.serv.show', $serv->identifier) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{ route('admin.serv.edit', $serv->identifier) }}" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
                             @endauth
                             <button type="submit" class="btn btn-sm btn-danger servdeletebtn"><i class="fas fa-trash"></i></button>

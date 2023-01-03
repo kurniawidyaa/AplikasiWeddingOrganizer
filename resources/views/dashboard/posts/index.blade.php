@@ -2,13 +2,18 @@
     <div class="card">
         <div class="card-header d-flex justify-content-between">
             <div class="card-tools mt-3 mb-3">
+                <form action="{{ route('admin.dbpost.index') }}">
                 <div class="input-group input-group-sm" >
-                    <input type="text" name="table_search" class="form-control float-right" style="width: 150px;" placeholder="Search">
+                        @if (request('postCategory'))
+                        <input type="hidden" name="postCategory" value="{{ request('postCategory') }}">
+                        @endif
+                        <input type="text" name="search" class="form-control float-right" style="width: 150px;" placeholder="Search">
                         <div class="input-group-append">
                             <button type="submit" class="btn btn-default">
                                 <i class="fas fa-search"></i>
                             </button>
                         </div>
+                    </form>
                 </div>
             </div>
                 <div class="button mt-2" style="margin-left: 650px">
@@ -45,13 +50,14 @@
                         <td>{{ $post->published_at}}</td>
                         <td>
                             <div class="btn-group btn-group-sm">
-                                <a href="" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                             {{-- owner side --}}
                             @auth('owner')
+                                <a href="{{ route('owner.dbpost.show', $post->slug) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{ route('owner.dbpost.edit', $post->slug) }}" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
                             @endauth
                             {{-- admin side --}}
                             @auth('admin')
+                                <a href="{{ route('admin.dbpost.show', $post->slug) }}" class="btn btn-info"><i class="fa-solid fa-eye"></i></a>
                                 <a href="{{ route('admin.dbpost.edit', $post->slug) }}" class="btn btn-warning"><i class="fas fa-edit text-white"></i></a>
                             @endauth
                             <button type="submit" class="btn btn-sm btn-danger deletebtn"><i class="fas fa-trash"></i></button>

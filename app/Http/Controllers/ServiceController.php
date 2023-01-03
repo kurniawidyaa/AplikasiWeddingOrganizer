@@ -24,6 +24,7 @@ class ServiceController extends Controller
     {
         $service = Service::where('identifier', $identifier)->first();
         return view('serviceDetail', [
+            'title' => 'Service Details',
             'service' => $service,
             'submit' => 'Pesan Sekarang'
         ]);

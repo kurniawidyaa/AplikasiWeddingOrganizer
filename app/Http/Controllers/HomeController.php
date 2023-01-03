@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
+use App\Models\ServiceCategory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -11,10 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Show the application dashboard.
@@ -23,6 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('index');
+        // $service = Service::orderBy('service_category_id')->get();
+        $pagination = Service::latest()->filter(request(['search', 'ServiceCategory']))->paginate(4)->withQueryString();
+        return view('home', [
+            'service' => $pagination,
+            'servicecategory' => ServiceCategory::all(),
+            'submit' => 'Detail Paket',
+            'title' => 'Layanan'
+        ]);
     }
 }

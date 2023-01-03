@@ -20,16 +20,16 @@
                     <p>{{ $message }}</p>
                 </div>
             @endif
-            <div class="card">
+            <div class="card card-table">
               <div class="card-header">
                 Item
               </div>
-              <div class="card-body">
+              <div class="card card-body">
                 <table class="table table-stripped">
                   <thead>
                     <tr>
                       <th>No</th>
-                      <th>Produk</th>
+                      <th>Layanan</th>
                       <th>Harga</th>
                       <th>Diskon</th>
                       <th>Qty</th>

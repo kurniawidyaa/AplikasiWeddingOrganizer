@@ -21,6 +21,11 @@ class DashboardPostController extends Controller
      */
     public function index()
     {
+        if (request('postCategory')) {
+            $postCategory = PostCategory::firstwhere('slug', request('postCategory'));
+            $title = ' in ' . $postCategory->name;
+        }
+
         return view('dashboard.posts.index', [
             'submit' => 'Tambah Data',
             'posts' => Post::all(),
@@ -86,9 +91,13 @@ class DashboardPostController extends Controller
      * @param  \App\Models\Post  $Post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', $slug)->first();
+        return view('dashboard.posts.show', [
+            'post' => $post,
+            'submit' => 'Kembali',
+        ]);
     }
 
     /**

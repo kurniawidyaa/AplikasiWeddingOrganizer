@@ -33,7 +33,7 @@ class OwnerController extends Controller
 
     public function logout()
     {
-        Auth::guard('owner')->logout();
+        Auth::logout('owner');
         return redirect('/');
     }
 

@@ -44,7 +44,7 @@
                           </td>
                           <td>
                           {{ $detail->service->service_name }}
-                          <br />
+                          <br/>
                           {{ $detail->service->service_code}}
                           </td>
                           <td>

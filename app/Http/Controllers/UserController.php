@@ -13,6 +13,14 @@ use RealRashid\SweetAlert\Facades\Alert;
 
 class UserController extends Controller
 {
+    public function index()
+    {
+        return view('user.index', [
+            'submit' => 'Tambah Data',
+            'user' => User::all(),
+        ]);
+    }
+
     public function store(Request $request)
     {
         $request->validate([
@@ -39,6 +47,15 @@ class UserController extends Controller
         return redirect('user.home');
     }
 
+    public function edit($id)
+    {
+        $user = User::where('id', $id)->first();
+        return view('user.edit', [
+            'submit' => 'Update',
+            'user' => $user,
+        ]);
+    }
+
     public function check(Request $request)
     {
         $request->validate([
@@ -50,7 +67,7 @@ class UserController extends Controller
 
         $creds = $request->only('email', 'password');
         if (Auth::guard('web')->attempt($creds)) {
-            return redirect()->route('user.home');
+            return redirect()->route('home');
         } else {
             Alert::toast('<p style="color:#ffffff">Data yang diinput tidak sesuai!</p>', 'error')
                 ->width('24rem')->background('#800000')->padding('0,25rem');
@@ -62,14 +79,6 @@ class UserController extends Controller
     {
         Auth::guard('web')->logout();
         return redirect('/');
-    }
-
-    public function index()
-    {
-        return view('user.index', [
-            'submit' => 'Tambah Data',
-            'user' => User::all(),
-        ]);
     }
 
     public function destroy($id)

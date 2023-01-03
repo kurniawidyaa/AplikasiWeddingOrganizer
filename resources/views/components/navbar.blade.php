@@ -35,7 +35,9 @@
           </nav><!-- .navbar -->
     
         </div>
-      </header><!-- End Header -->
+    </header>
+      <!-- End Header -->
+    
 
       {{-- 
         bedanya agar transparant :
