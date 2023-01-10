@@ -24,14 +24,16 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'username' => ['required', 'string', 'max:255'],
+            'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:5',],
             'confirmPassword' => ['required', 'string', 'min:5', 'same:password']
         ]);
 
-        $attr['username'] = $request->username;
+        $attr['name'] = $request->name;
         $attr['email'] = $request->email;
+        $attr['phone'] = $request->phone;
+        $attr['address'] = $request->address;
         $attr['password'] = Hash::make($request->password);
         $attr['email_verified_at'] = Carbon::now($request->email_verified_at);
 
@@ -67,7 +69,7 @@ class UserController extends Controller
 
         $creds = $request->only('email', 'password');
         if (Auth::guard('web')->attempt($creds)) {
-            return redirect()->route('home');
+            return redirect()->route('/');
         } else {
             Alert::toast('<p style="color:#ffffff">Data yang diinput tidak sesuai!</p>', 'error')
                 ->width('24rem')->background('#800000')->padding('0,25rem');

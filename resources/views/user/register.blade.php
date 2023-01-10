@@ -9,18 +9,20 @@
                 <p class="login-box-msg">Register a new account</p>
                 <form action="{{ route('user.regist') }}" method="post">
                     @csrf
+            {{-- input name --}}
             <div class="mb-3">
                 <div class="input-group">
-                    <input type="text" class="form-control" name="username" placeholder="Username" value="{{ old('username') }}" autocomplete="off">
+                    <input type="text" class="form-control" name="name" placeholder="name" value="{{ old('name') }}" autocomplete="off">
                     <div class="input-group-append">
                         <div class="input-group-text">
                             <span class="fas fa-user"></span>
                         </div>
                     </div><br>
                 </div>
-                <span class="text-danger">@error('username') {{ $message }} @enderror</span>
+                <span class="text-danger">@error('name') {{ $message }} @enderror</span>
             </div>
-
+            
+            {{-- input email --}}
             <div class="mb-3">
                 <div class="input-group">
                     <input type="email" class="form-control" name="email" placeholder="Email" value="{{ old('email') }}" autocomplete="off">
@@ -33,6 +35,33 @@
                 <span class="text-danger">@error('email') {{ $message }} @enderror</span>
             </div>
 
+            {{-- input phone number --}}
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="phone" placeholder="phone" value="{{ old('phone') }}" autocomplete="off">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-phone"></span>
+                        </div>
+                    </div><br>
+                </div>
+                <span class="text-danger">@error('phone') {{ $message }} @enderror</span>
+            </div>
+
+            {{-- input address --}}
+            <div class="mb-3">
+                <div class="input-group">
+                    <input type="text" class="form-control" name="address" placeholder="address" value="{{ old('address') }}" autocomplete="off">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-map-marker"></span>
+                        </div>
+                    </div><br>
+                </div>
+                <span class="text-danger">@error('address') {{ $message }} @enderror</span>
+            </div>
+
+            {{-- input password --}}
             <div class="mb-3">
                 <div class="input-group">
                     <input type="password" class="form-control" name="password" placeholder="Password" value="{{ old('password') }}"> 
